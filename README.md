@@ -161,7 +161,3 @@ You are now ready to work on ResultHub.
 - [ ] Environment variables configured
 - [ ] Database connection tested successfully
 - [ ] Project runs successfully
-
-## HoD module foundation
-
-The initial module structure, developer responsibilities, screen requirements, database dependencies, and implementation roadmap are documented in the [HoD Module Implementation Handover](docs/HOD_MODULE_IMPLEMENTATION.md).
