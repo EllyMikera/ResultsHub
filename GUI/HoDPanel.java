@@ -1,7 +1,10 @@
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 public class HoDPanel extends JPanel {
     private static final String TIMETABLE_CARD = "timetable";
@@ -9,21 +12,29 @@ public class HoDPanel extends JPanel {
 
     public HoDPanel() {
         super(new BorderLayout());
+        setPreferredSize(new Dimension(1120, 720));
+        setBackground(Color.WHITE);
 
         CardLayout cardLayout = new CardLayout();
         JPanel content = new JPanel(cardLayout);
+        content.setBorder(new EmptyBorder(0, 0, 0, 0));
         content.add(new CourseUnitTimetablePanel(), TIMETABLE_CARD);
         content.add(new RoomAllocationPanel(), ROOM_ALLOCATION_CARD);
 
-        JPanel navigation = new JPanel();
-        JButton timetableButton = new JButton("Course-Unit Timetables");
+        JButton timetableButton = new JButton();
         timetableButton.addActionListener(event -> cardLayout.show(content, TIMETABLE_CARD));
-        JButton roomAllocationButton = new JButton("Room Allocations");
+        JButton roomAllocationButton = new JButton();
         roomAllocationButton.addActionListener(event -> cardLayout.show(content, ROOM_ALLOCATION_CARD));
 
-        navigation.add(timetableButton);
-        navigation.add(roomAllocationButton);
-        add(navigation, BorderLayout.NORTH);
-        add(content, BorderLayout.CENTER);
+        JPanel shell = new JPanel(new BorderLayout());
+        shell.add(HoDShellComponents.createInstitutionHeader(), BorderLayout.NORTH);
+
+        JPanel mainRow = new JPanel(new BorderLayout());
+        mainRow.add(HoDShellComponents.createSidebar(timetableButton, roomAllocationButton), BorderLayout.WEST);
+        mainRow.add(content, BorderLayout.CENTER);
+        shell.add(mainRow, BorderLayout.CENTER);
+        shell.add(HoDShellComponents.createStatusBar(), BorderLayout.SOUTH);
+
+        add(shell, BorderLayout.CENTER);
     }
 }
