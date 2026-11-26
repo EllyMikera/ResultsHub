@@ -1,0 +1,13 @@
+-- Tables
+-- 1.students
+-- 2.staff
+-- 3.hod
+-- 4.department
+-- 5.courseUnits
+-- 6.results
+-- 7.room
+-- 8.roomAllocation
+
+-- Write every table schema for all tables here
+-- Implement appropriate relationships between tables, define foreign keys and auto_increment primary keys
+-- It is assumed the group has already created the database therefore don't include the 'CREATE DATABSE' command. Begin with the table schema directly
